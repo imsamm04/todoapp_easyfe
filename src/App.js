@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import TodoList from "./components/TodoList";
 import { useState } from "react";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -21,8 +22,20 @@ function App() {
     }
   }
 
+  function handleTodoFormSubmit(formValues) {
+    console.log("form submit: ", formValues);
+    const newTodo = {
+      id: todoList.length + 1,
+      ...formValues,
+    };
+    const newTodoList = [...todoList];
+    newTodoList.push(newTodo);
+    setTodoList(newTodoList);
+  }
+
   return (
     <div className="App">
+      <TodoForm onSubmit={handleTodoFormSubmit} />
       <TodoList todos={todoList} onTodoClick={handleTodoClick} />
     </div>
   );
