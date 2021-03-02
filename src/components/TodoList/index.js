@@ -14,9 +14,9 @@ TodoList.defaultProps = {
 function TodoList(props) {
   const { todos, onTodoClick } = props;
 
-  function handleClick(todo){
-    if(onTodoClick){
-      onTodoClick(todo)
+  function handleClick(todo) {
+    if (onTodoClick) {
+      onTodoClick(todo);
     }
   }
 
@@ -24,7 +24,7 @@ function TodoList(props) {
     <div>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} onClick={()=>handleClick(todo)}>
+          <li key={todo.id} onClick={() => handleClick(todo)}>
             {todo.title}{" "}
           </li>
         ))}
